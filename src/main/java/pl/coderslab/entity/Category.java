@@ -1,9 +1,9 @@
-package entity;
-
+package pl.coderslab.entity;
 
 import javax.persistence.*;
 
 @Entity
+@Table(name = "categories")
 public class Category {
 
     @Id
@@ -12,6 +12,7 @@ public class Category {
     @Column(length = 100)
     private String name;
     private String description;
+
 
     public Long getId() {
         return id;
