@@ -1,11 +1,10 @@
 package pl.coderslab.controller;
 
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.dao.CategoryDao;
 import pl.coderslab.entity.Category;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/category")
@@ -25,8 +24,9 @@ public class CategoryController {
     @PostMapping("/add")
     public Category addCategory(){
         Category category = new Category();
-        category.setName("Reportaż");
-        category.setDescription("Opis zdarzeń lub faktów oparty na autentycznym materiale");
+        category.setName("Artykuł naukowy");
+        category.setDescription("Prezentuje wyniki oryginalnych badań o charakterze empirycznym, " +
+                "teoretycznym, technicznym lub analitycznym.");
         categoryDao.save(category);
         return category;
     }
@@ -34,5 +34,10 @@ public class CategoryController {
     @PostMapping("/delete/{id}")
     public void deleteCategory(@PathVariable Long id){
         categoryDao.delete(categoryDao.findById(id));
+    }
+
+    @GetMapping("/all")
+    public List<Category> findAllCategories(){
+        return categoryDao.findAll();
     }
 }

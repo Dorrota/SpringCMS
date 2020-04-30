@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.*;
 import pl.coderslab.dao.AuthorDao;
 import pl.coderslab.entity.Author;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/author")
 public class AuthorController {
@@ -35,5 +37,11 @@ public class AuthorController {
     @ResponseBody
     public void deleteAuthor(@PathVariable Long id){
         authorDao.delete(authorDao.findById(id));
+    }
+
+    @GetMapping("/all")
+    @ResponseBody
+    public List<Author> findAllAuthors(){
+        return authorDao.findAll();
     }
 }

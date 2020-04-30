@@ -6,6 +6,7 @@ import pl.coderslab.entity.Author;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Repository
 @Transactional
@@ -16,6 +17,10 @@ public class AuthorDao {
 
     public Author findById(Long id){
         return entityManager.find(Author.class, id);
+    }
+
+    public List<Author> findAll(){
+        return entityManager.createQuery("SELECT a FROM Author a", Author.class).getResultList();
     }
 
     public void save(Author author){

@@ -2,6 +2,7 @@ package pl.coderslab.entity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -18,8 +19,8 @@ public class Article {
     @ManyToOne
     private Author author;
 
-    @ManyToMany
-    private List<Category> categories;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Category> categories = new ArrayList<>();
 
     private String content;
     private LocalDateTime created;
