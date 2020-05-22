@@ -20,6 +20,9 @@ public class ArticleDao {
         return entityManager.find(Article.class,id);
     }
 
+    public List<Article> findFive(){
+        return entityManager.createQuery("SELECT a FROM Article a ORDER BY a.created").setMaxResults(5).getResultList();
+    }
     public List<Article> findAll(){
         return entityManager.createQuery("SELECT a FROM Article a", Article.class).getResultList();
     }

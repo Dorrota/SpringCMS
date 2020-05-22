@@ -27,7 +27,7 @@ public class AppConfig implements WebMvcConfigurer {
 //    }
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
-        registry.jsp("", ".jsp");
+        registry.jsp("/WEB-INF/views/", ".jsp");
     }
 
     @Override
